@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменить пароль</title>
+</head>
+<body>
+    <section class="profile-page">
+        <div class="profile-page__menu">
+            <a href="" class="profile-page__menu-link change-tariff">Управлять подпиской</a>
+            <a href="" class="profile-page__menu-link change-pass">Сменить пароль</a>
+            <a href="" class="profile-page__menu-link">Управление ключами сотрудников</a>
+            <a href="" class="profile-page__menu-link"> Настройки...</a>
+        </div>
+        <div class="profile-page__info-block">
+            <div class="profile-page__tariff">Изменение пароля</div>
+            <div class="change-pass-form__container">
+                <form action="http://185.209.22.56:{{port}}/user-registration" method="post" class="reg-form reg-form_change-pass">
+                  <div class="reg-form__input-container">
+                    <label for="password" class="reg-form__label"></label>
+                    <input name="password" id="password" value="" placeholder="Ваш текущий пароль" class="reg-form__input">
+                    <div class="reg-form__notification" hidden></div>
+                  </div>
+                  <div class="reg-form__input-container">
+                    <label for="password" class="reg-form__label"></label>
+                    <input name="password" value="" placeholder="Новый пароль" class="reg-form__input reg-form__new-pass">
+                    <div class="reg-form__notification" hidden></div>
+                  </div>
+                  <div class="reg-form__input-container">
+                    <label for="password" class="reg-form__label"></label>
+                    <input name="password" value="" placeholder="Повторите новый пароль" class="reg-form__input reg-form__new-pass-repeat">
+                    <div class="reg-form__notification" hidden></div>
+                  </div>
+                  <div>
+                    <button class="reg-form__submit-btn">Сменить пароль</button>
+                  </div>
+                </form>
+              </div>
+        </div>
+            
+    </section>
+</body>
+</html>

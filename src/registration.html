@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" /><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Регистрация</title>
+  </head>
+  <body>
+    <section class="reg-page">
+      <div class="reg-form__container">
+        <form action="http://185.209.22.56:{{port}}/user-registration" method="post" class="reg-form">
+          <div class="reg-form__input-container">
+            <label for="email" class="reg-form__label"></label>
+            <input name="email" id="email" value="" placeholder="Ваш e-mail" class="reg-form__input">
+            <div class="reg-form__notification" hidden></div>
+          </div>
+          <div class="reg-form__input-container">
+            <label for="login" class="reg-form__label"></label>
+            <input name="login" id="login" value="" placeholder="Ваш логин" class="reg-form__input">
+            <div class="reg-form__notification" hidden></div>
+          </div>
+          <div class="reg-form__input-container">
+            <label for="password" class="reg-form__label"></label>
+            <input name="password" id="password" value="" placeholder="Ваш пароль" class="reg-form__input">
+            <div class="reg-form__notification" hidden></div>
+          </div>
+    
+          <div>
+            <button class="reg-form__submit-btn">Зарегистрироваться</button>
+          </div>
+          <a href="" class="reg-form__login-or-reg">Есть аккаунт? Войти</a>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

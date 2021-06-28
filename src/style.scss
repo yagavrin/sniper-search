@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+}
+
+.reg-page {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.login-page {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.reg-form {
+    border: 3px solid black;
+    border-radius: 8px;
+    padding: 50px;
+    padding-bottom: 25px;
+    width: 406px;
+    margin: 0 auto;
+    &__input-container {
+        position: relative;
+    }
+    &__notification {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        border: 1px solid black;
+        width: 400px;
+        // height: 40px;
+        background-color: white;
+        padding: 5px;
+        font-size: 14px;
+    }
+    @keyframes shaking{
+        0%  { left: -3px; }
+        50%  { left: 3px; }
+        100% { left: 0px; }
+    }
+    &__submit-btn {
+        position: relative;
+        margin-top: 10px;
+        width: 300px;
+        height: 55px;
+        border: 3px solid black;
+        border-radius: 30px;
+        background-color: transparent;
+        font-size: 16px;
+        text-transform: uppercase;
+        &_animated {
+            animation: shaking 0.1s cubic-bezier(0.65, 0.05, 0.36, 1) 0s 5 alternate both;
+        }
+        
+    }
+    &__submit-btn:hover {
+        background-color: black;
+        color: white;
+    }
+    &__login-or-reg {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        text-align: center;
+        :active {
+            color: green;
+        }
+    }
+    &__input-container {
+        margin-bottom: 10px;
+        display: block;
+        input{
+            box-sizing: border-box;
+            padding-left: 10px;
+            width: 300px;
+            height: 40px;
+        }
+    }
+
+    &_change-pass {
+        border: none
+    }
+}
+
+.profile-page {
+    display: grid;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 100px 50px 0px 0px;
+    
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    grid-template-areas: "menu info";
+    grid-template-rows: 1fr;  
+    grid-template-columns: 40% 1fr;
+    &__menu {
+        padding-top: 50px;
+        grid-area: menu;
+        background-color: #2696c0;
+        :first-child {
+            border-top: 1px solid #e7e7e7;
+        }
+    }
+    &__info-block {
+        padding-top: 50px;
+        padding-left: 30px;
+        grid-area: info;
+        height: 100Vh;
+    }
+    &__menu-link {
+        display: block;
+        height: 62px;
+        border-bottom: 1px solid #e7e7e7;
+        padding: 18px;
+        padding-left: 30px;
+        text-decoration: none;
+        color: white
+    }
+    &__tariff {
+        padding-bottom: 20px;
+        font-size: 25px;
+    }
+    &__tariff-link {
+        font-size: 25;
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
+
+.user-list {
+    &__list-el {
+        list-style: none;
+        display: flex;
+        margin-bottom: 10px;
+    }
+    &__button {
+        background-color: white;
+        width: 160px;
+        height: 40px;
+        margin-left: 20px;
+    }
+}
+
+.subscription {
+    &__input-container {
+        position: relative;
+    }
+    &__input{
+        display: block;
+    }
+    &__btn {
+        background-color:white;
+        position: relative;
+        width: 200px;
+        height: 60px;
+        border-radius: 30px;
+    }
+    &__btn:hover {
+        background-color: black;
+        color: white;
+    }
+}
