@@ -2,12 +2,6 @@ import { BasicFormHandler } from './form-handler'
 import { Notification } from './notification'
 
 class SubscribeHandler extends BasicFormHandler {
-    // constructor(element) {
-    //     this.parentEl = element
-    //     if (this.parentEl) {
-    //         this.init()
-    //     }
-    // }
 
     init() {
         this.innEl = this.parentEl.querySelector('.subscription__input_inn')
@@ -17,7 +11,6 @@ class SubscribeHandler extends BasicFormHandler {
         this.submitBtn = this.parentEl.querySelector('.subscription__btn')
         this.inputs = this.parentEl.querySelectorAll('.subscription__input')
         this.opfRadio1 = this.parentEl.querySelector('[value="ip"]')
-        console.log(this.opfRadio1)
         this.form = this.parentEl.querySelector('.subscription__form')
 
         this.nameElHandler = this.nameElHandler.bind(this)

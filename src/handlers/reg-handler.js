@@ -49,34 +49,25 @@ class RegistrationHandler extends BasicFormHandler {
 
     async fetchRegistration() {
         const data = new FormData(this.form)
-        try {
-            let response = await fetch('/user-registration', {
-                method: 'POST',
-                // headers: {
-                //   'Content-Type': 'application/x-www-form-urlencoded'
-                // },
-                body: data
-            });
-            if (response.ok) {
-                let result = await response.json();
-                if (result.result === 'login is already in use') {
-                    Notification.showNotification(this.loginInput, 'Пользователь с таким аккаунтом уже зарегистрирован')
-                    this.shakeBtn(this.submitBtn)
-                    return
-                }
-                if (result.result === 'success') {
-                    alert('Успех')
-                    return
-                }
-            } else {
-                Notification.showNotification(this.loginInput, 'Непредвиденная ошибка, попробуйте еще раз или перезагрузите страницу')
-                this.shakeBtn(this.submitBtn)
-            }
-        } catch (error) {
-            console.log('er', error)
-            Notification.showNotification(this.loginInput, 'Непредвиденная ошибка, попробуйте еще раз или перезагрузите страницу')
+        const options = {
+            url: '/user-registration',
+            method: 'POST',
+            data,
+            func: this.fetchOK
+        }
+        this.fetchURL(options)
+    }
+
+    fetchOK(result) {
+        if (result.result === 'login is already in use') {
+            Notification.showNotification(this.loginInput, 'Пользователь с таким аккаунтом уже зарегистрирован')
             this.shakeBtn(this.submitBtn)
-          }
+            return
+        }
+        if (result.result === 'success') {
+            alert('Успех')
+            return
+        }
     }
 
     inputFocusHandler(e) {

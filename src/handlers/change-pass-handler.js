@@ -42,36 +42,27 @@ class ChangePassHandler extends RegistrationHandler {
             this.shakeBtn(this.submitBtn)
         } else {
             const data = new FormData(this.form)
-            try {
-                let response = await fetch('/user/accounts', {
-                    method: 'POST',
-                    // headers: {
-                    //   'Content-Type': 'application/x-www-form-urlencoded'
-                    // },
-                    body: data
-                });
-                if (response.ok) {
-                    let result = await response.json();
-                    if (result.result === 'invalid credentials') {
-                        Notification.showNotification(this.loginInput, 'Неверные данные')
-                        this.shakeBtn(this.submitBtn)
-                        return
-                    }
-                    if (result.result) {
-                        alert('Успех')
-                        return
-                    }
-                } else {
-                    Notification.showNotification(this.loginInput, 'Непредвиденная ошибка, попробуйте еще раз или перезагрузите страницу')
-                    this.shakeBtn(this.submitBtn)
-                }
-            } catch (error) {
-                console.log('er', error)
-                Notification.showNotification(this.loginInput, 'Непредвиденная ошибка, попробуйте еще раз или перезагрузите страницу')
-                this.shakeBtn(this.submitBtn)
-              }
+            const options = {
+                url: '/user/accounts',
+                method: 'POST',
+                data,
+                func: this.fetchOK,
+            }
+            this.fetchURL(options)
         }
         
+    }
+
+    fetchOK(result) {
+        if (result.result === 'invalid credentials') {
+            Notification.showNotification(this.loginInput, 'Неверные данные')
+            this.shakeBtn(this.submitBtn)
+            return
+        }
+        if (result.result) {
+            alert('Успех')
+            return
+        }
     }
 
     checkOldPassword() {
