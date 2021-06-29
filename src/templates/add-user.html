@@ -1,0 +1,29 @@
+{% extends 'user-profile.html' %}
+{% block head_title %}Добавление пользователей{% endblock %}
+{% block profile_details %}
+<div class="profile-page__tariff">Добавление пользователей</div>
+<div class="user-list__container">
+    <ul class="user-list__ul">
+        <li class="user-list__list-el">
+            <div class="user-list__user-name">User_1</div> <!-- дата атрибуты -->
+            <button class="user-list__button user-list__button_delete">Удалить</button>
+            <div class="reg-form__notification" hidden></div>
+        </li>
+        <li class="user-list__list-el">
+            <div class="user-list__user-name">User_2</div>
+            <button class="user-list__button user-list__button_delete">Удалить</button>
+            <div class="reg-form__notification" hidden></div>
+        </li>
+        <li class="user-list__list-el">
+            <div class="user-list__user-name">User_3</div>
+            <button class="user-list__button user-list__button_delete">Удалить</button>
+            <div class="reg-form__notification" hidden></div>
+        </li>
+    </ul>
+    <form action="" class="user-list__form">
+        <input type="text" class="user-list__input">
+        <div class="reg-form__notification" hidden></div>
+        <button class="user-list__button">Добавить</button>
+    </form>
+</div>
+{% endblock %}

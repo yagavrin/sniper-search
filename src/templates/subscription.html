@@ -1,0 +1,28 @@
+{% extends 'user-profile.html' %}
+{% block head_title %}Оформление подписки{% endblock %}
+{% block profile_details %}
+<div class="subscription__container">
+    <form action="" class="subscription__form">
+        <div class="subscription__input-container">
+            <input type="text" class="subscription__input subscription__input_name" placeholder="Название организации">
+            <div class="reg-form__notification" hidden></div>
+        </div>
+        <p><input name="opf" value="yur" type="radio" checked>Юр. лицо</p>
+        <p><input name="opf" value='ip' type="radio">Индивидуальный предприниматель</p>
+        <div class="subscription__input-container">
+            <input type="text" class="subscription__input subscription__input_inn" placeholder="ИНН">
+            <div class="reg-form__notification" hidden></div></div>
+        <div class="subscription__input-container">
+            <input type="text" class="subscription__input subscription__input_kpp" placeholder="КПП">
+            <div class="reg-form__notification" hidden></div>
+        </div>
+        <div class="subscription__input-container">
+            <input type="text" class="subscription__input subscription__input_phone" placeholder="Номер телефона">
+            <div class="reg-form__notification" hidden></div>
+        </div>
+        <!-- <input type="text" class="subscription__input "> -->
+        <button type="submit" class="subscription__btn">Запросить счет</button>
+    </form>
+    
+</div>
+{% endblock %}

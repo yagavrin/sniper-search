@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block head_title %}Личный кабинет{% endblock %}
+{% block body %}
+<section class="profile-page">
+    <div class="profile-page__menu">
+        <a href="" class="profile-page__menu-link change-tariff">Управлять подпиской</a>
+        <a href="" class="profile-page__menu-link change-pass">Сменить пароль</a>
+        <a href="" class="profile-page__menu-link">Управление ключами сотрудников</a>
+        <a href="" class="profile-page__menu-link"> Настройки...</a>
+    </div>
+    <div class="profile-page__info-block">
+        {% block profile_details %}
+            <div class="profile-page__tariff">Ваш тарифный план <a href="" class="profile-page__tariff-link">"Продвинутый"</a> </div>
+            <div class="profile-page__exp-date">Срок подписки истекает 12.12.2021</div>
+            <div class="profile-page__company-details">
+                <h3>Профиль</h3>
+                <table>
+                    <tr>
+                        <td>
+                            Электронная почта
+                        </td>
+                        <td>
+                            user@mail.ru
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Номер телефона
+                        </td>
+                        <td>
+                            +7 999 999 99 99
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Название организации
+                        </td>
+                        <td>
+                            ООО "Сладость в радость"
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ИНН/КПП
+                        </td>
+                        <td>
+                            4401097999/440101001
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        {% endblock %}
+    </div>   
+</section>
+{% endblock %}
