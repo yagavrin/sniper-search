@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +10,9 @@
     <title>{% block head_title %}Sniper search{% endblock %}</title>
 </head>
 <body>
-    <h1>bye</h1>
+    {% block header %}{% endblock %}
     {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
     <script src="{{ url_for('static', path='/index.js') }}"></script>
 </body>
 </html>

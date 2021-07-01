@@ -1,5 +1,6 @@
 import { BasicFormHandler } from './form-handler'
 import { Notification } from './notification'
+import { Modal } from './modal'
 
 class UserListHandler extends BasicFormHandler {
     constructor(element) {
@@ -10,67 +11,74 @@ class UserListHandler extends BasicFormHandler {
     }
     init() {
         this.deleteBtnsArray = this.parentEl.querySelectorAll('.user-list__button_delete')
-        this.deleteBtnHandler = this.deleteBtnHandler.bind(this)
-        this.addUserHandler = this.addUserHandler.bind(this)
-        this.deleteBtnsArray.forEach((btn) => {
-            btn.addEventListener('click', this.deleteBtnHandler)
-        })
         this.userElArray = this.parentEl.querySelectorAll('.user-list__user-name')
         this.users = Array.from(this.userElArray).map(element => element.textContent)
         this.input = this.parentEl.querySelector('.user-list__input')
-        this.addForm = this.parentEl.querySelector('.user-list__form')
-        this.addBtn = this.addForm.querySelector('.user-list__button')
+        this.addUserForm = this.parentEl.querySelector('.user-list__form')
+        this.addBtn = this.addUserForm.querySelector('.user-list__button')
         this.list = this.parentEl.querySelector('.user-list__ul')
+
+        this.submitFormHandler = this.submitFormHandler.bind(this)
+        this.deleteBtnHandler = this.deleteBtnHandler.bind(this)
         
-        this.addForm.addEventListener('submit', this.submitHandler)
-        this.addBtn.addEventListener('click', this.addUserHandler)
+        this.addUserForm.addEventListener('submit', this.submitFormHandler)
+        this.deleteBtnsArray.forEach((btn) => {
+            btn.addEventListener('click', this.deleteBtnHandler)
+        })
     }
     deleteBtnHandler(e) {
         const li = e.target.closest('li')
         const login = li.querySelector('.user-list__user-name').textContent
-        this.deleteUser(login, e.target)
+        const options = {
+            url: '/accounts/delete',
+            method: 'POST',
+            data: JSON.stringify({login: login}),
+            func: this.deleteUserIsOk,
+        }
+        this.fetchURL(options)
        
     }
-    async addUserHandler(e) {
-        const data = this.input.value
+    fetchUSerIsOK(response) {
+        const result = response.result
+        if (result = 'error') {
+            return
+        }
+        if (result = 'login not found') {
+            return
+        }
+        if (result = 'no permissions') {
+            return
+        }
+        if (Array.isArray(result)) {
+            this.users = result
+            this.renderUserList()
+            return
+        } else {
+            this.modal.showModal('Что-то пошло не так...')
+        }
+    }
+    submitFormHandler(e) {
+        e.preventDefault()
+        const data = new FormData(this.addUserForm)
         if (data.length === 0) return
         const options = {
-            url: '/user/accounts/delete',
+            url: '/accounts/add/',
             method: 'POST',
             data: JSON.stringify({login: data}),
-            func: this.fetchOK
+            func: this.fetchUSerIsOK
         }
         this.fetchURL(options)
         this.renderUserList()
     }
-    fetchOK(result) {
+
+    deleteUserIsOk(result) {
         if (result.result) {
             alert('Успех')
             this.users = result.result
             this.renderUserList()
             return
-        }
-    }
-    submitHandler(e) {
-        e.preventDefault()
-    }
-    async deleteUser(login, elem) {
-        const options = {
-            url: '/user/accounts/delete',
-            method: 'POST',
-            data: JSON.stringify({login: login}),
-            func: this.deleteUserOk,
-        }
-
-        this.fetchURL(options)
-    }
-
-    deleteUserOk(result) {
-        if (result.result) {
-            alert('Успех')
-            this.users = result.result
-            this.renderUserList()
-            return
+        } else {
+            this.modal.showModal('Что-то пошло не так...')
         }
     }
 

@@ -1,9 +1,11 @@
+import { Modal } from './modal'
+
 class BasicFormHandler {
     constructor(element) {
         this.parentEl = element
-        
         if (this.parentEl) {
             this.init()
+            this.modal = new Modal()
         }
     }
 
@@ -21,15 +23,11 @@ class BasicFormHandler {
                 const result = await response.json();
                 func(result)
             } else {
-                // Notification.showNotification(elem, 'Непредвиденная ошибка, попробуйте еще раз или перезагрузите страницу')
-                // this.submitBtn.classList.add('reg-form__submit-btn_animated')
-                // setTimeout(() => this.submitBtn.classList.remove('reg-form__submit-btn_animated'), 500)
+                this.modal.showModal('Что-то пошло не так...')
             }
         } catch (error) {
             console.log('er', error)
-            // Notification.showNotification(elem, 'Непредвиденная ошибка, попробуйте еще раз или перезагрузите страницу')
-            // this.submitBtn.classList.add('reg-form__submit-btn_animated')
-            // setTimeout(() => this.submitBtn.classList.remove('reg-form__submit-btn_animated'), 500)
+            this.modal.showModal('Что-то пошло не так...')
         }
     }
 

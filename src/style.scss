@@ -162,3 +162,35 @@
         color: white;
     }
 }
+
+.modal {
+    padding: 20px;
+    padding-top: 40px;
+    &__container {
+        position: absolute; 
+        left: 0; right: 0; top: 0; bottom: 0;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+    }
+    &__close-btn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    &__text {
+        margin-top: 20px;
+        text-align: center;
+    }
+    &_active {
+        width: 250px;
+        height: 150px;
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        margin: 0 auto;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
