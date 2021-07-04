@@ -1,5 +1,10 @@
 * {
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+//Удалить
+* section {
+    min-height: 700px;
 }
 
 .reg-page {
@@ -88,7 +93,7 @@
     display: grid;
     width: 1200px;
     margin: 0 auto;
-    padding: 100px 50px 0px 0px;
+    padding: 30px 0px 30px 0px;
     
     font-size: 22px;
     font-family: Arial, Helvetica, sans-serif;
@@ -107,7 +112,7 @@
         padding-top: 50px;
         padding-left: 30px;
         grid-area: info;
-        height: 100Vh;
+        // height: 100Vh;
     }
     &__menu-link {
         display: block;
@@ -141,6 +146,9 @@
         height: 40px;
         margin-left: 20px;
     }
+    &__form {
+        position: relative;
+    }
 }
 
 .subscription {
@@ -167,6 +175,7 @@
     padding: 20px;
     padding-top: 40px;
     &__container {
+        z-index: 1;
         position: absolute; 
         left: 0; right: 0; top: 0; bottom: 0;
         background-color: rgba($color: #000000, $alpha: 0.5);
@@ -184,13 +193,43 @@
         text-align: center;
     }
     &_active {
+        z-index: 1;
         width: 250px;
         height: 150px;
         position: absolute;
         left: 0; right: 0; top: 0; bottom: 0;
-        margin: 0 auto;
+        margin: auto auto;
         background-color: white;
         border: 1px solid black;
         border-radius: 5px;
+    }
+}
+
+.header {
+    &__ul {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    &__item {
+        list-style: none;
+        
+    }
+    &__link {
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+    }
+}
+
+.btn {
+    &_show-pass {
+        border: none;
+        background-color: transparent;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-decoration-color: rgba($color: #000000, $alpha: 0.5);
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 16px;
     }
 }

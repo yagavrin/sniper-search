@@ -1,6 +1,7 @@
 import { BasicFormHandler } from './form-handler'
 import { Notification } from './notification'
 
+
 class LoginHandler extends BasicFormHandler{
 
     init() {
@@ -13,6 +14,7 @@ class LoginHandler extends BasicFormHandler{
         this.passInputHandler = this.passInputHandler.bind(this)
         this.submitFormHandler = this.submitFormHandler.bind(this)
         this.inputFocusHandler = this.inputFocusHandler.bind(this)
+        this.loginIsOK = this.loginIsOK.bind(this)
 
         this.loginInput.addEventListener('blur', this.loginInputHandler)
         this.passInput.addEventListener('blur', this.passInputHandler)
@@ -57,25 +59,30 @@ class LoginHandler extends BasicFormHandler{
             e.preventDefault()
         } else {
             const data = new FormData(this.form)
+            // const hash = await this.convertToSHA515(this.passInput.value)
+            // data.set('password', hash)
             const options = {
-                url: '/login',
+                url: '/user/login',
                 method: 'POST',
                 data,
-                func: this.loginOK
+                func: this.loginIsOK
             }
             this.fetchURL(options)
         }
     }
 
-    loginOK(result) {
-        if (result.result === 'invalid credentials') {
+    loginIsOK(response) {
+        const result = response.result
+        if (result === 'invalid credentials') {
             Notification.showNotification(this.loginInput, 'Неверные данные')
             this.shakeBtn(this.submitBtn)
             return
         }
-        if (result.result) {
-            alert('Успех')
+        if (response.access_token.length > 0) {
+            window.location.href = '/user/profile'
             return
+        } else {
+            this.modal.showModal('Что-то пошло не так...')
         }
     }
 

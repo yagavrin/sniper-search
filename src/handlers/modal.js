@@ -23,9 +23,17 @@ class Modal {
         this.modal.append(this.modalTextEl)
 
         this.closeModal = this.closeModal.bind(this)
+        this.closeModalHandler = this.closeModalHandler.bind(this)
 
         this.closeBtn.addEventListener('click', this.closeModal)
-        this.parentEl.addEventListener('click', this.closeModal)
+        this.parentEl.addEventListener('click', this.closeModalHandler)
+    }
+
+    closeModalHandler(e) {
+        const modal = e.target.closest('.modal')
+        if (!modal) {
+            this.closeModal()
+        }
     }
 
     showModal(text) {

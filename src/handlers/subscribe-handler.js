@@ -19,6 +19,7 @@ class SubscribeHandler extends BasicFormHandler {
         // this.phoneElHandler = this.phoneElHandler.bind(this)
         this.formHandler = this.formHandler.bind(this)
         this.radioHandler = this.radioHandler.bind(this)
+        this.requestInvoiceIsOK = this.requestInvoiceIsOK.bind(this)
 
         this.nameEl.addEventListener('blur', this.nameElHandler)
         this.innEl.addEventListener('blur', this.innElHandler)
@@ -39,17 +40,22 @@ class SubscribeHandler extends BasicFormHandler {
             this.shakeBtn(this.submitBtn)
         } else {
             const options = {
-                url: 'user/accounts/',
+                url: '/user/subscription/',
                 method: 'POST',
                 data: new FormData(this.form),
-                func: this.addUserOK
+                func: this.requestInvoiceIsOK
             }
             this.fetchURL(options)
         }
     }
 
-    addUserOK(result) {
-        console.log(result)
+    requestInvoiceIsOK(result) {
+        if (result.result === 'success') {
+            this.modal.showModal('Запрос на выставление счета отправлен. Вы получите его на почту, указанную при регистрации')
+            return
+        } else {
+            this.modal.showModal('Что-то пошло не так...')
+        }
     }
 
     radioHandler(e) {

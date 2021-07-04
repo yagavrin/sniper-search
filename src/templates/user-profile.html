@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block head_title %}Личный кабинет{% endblock %}
 {% block body %}
 <section class="profile-page">
     <div class="profile-page__menu">
-        <a href="" class="profile-page__menu-link change-tariff">Управлять подпиской</a>
-        <a href="" class="profile-page__menu-link change-pass">Сменить пароль</a>
-        <a href="" class="profile-page__menu-link">Управление ключами сотрудников</a>
+        <a href="{{server_url}}/user/profile/subscription" class="profile-page__menu-link change-tariff">Управлять подпиской</a>
+        <a href="{{server_url}}/user/profile/edit" class="profile-page__menu-link change-pass">Сменить пароль</a>
+        <a href="{{server_url}}/user/profile/add-user" class="profile-page__menu-link">Управление ключами сотрудников</a>
         <a href="" class="profile-page__menu-link"> Настройки...</a>
     </div>
     <div class="profile-page__info-block">
@@ -20,7 +20,7 @@
                             Электронная почта
                         </td>
                         <td>
-                            user@mail.ru
+                            {{user_email}}
                         </td>
                     </tr>
                     <tr>
@@ -28,7 +28,7 @@
                             Номер телефона
                         </td>
                         <td>
-                            +7 999 999 99 99
+                            {{user_phone}}
                         </td>
                     </tr>
                     <tr>
@@ -36,7 +36,7 @@
                             Название организации
                         </td>
                         <td>
-                            ООО "Сладость в радость"
+                            {{user_organization_name}}
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +44,7 @@
                             ИНН/КПП
                         </td>
                         <td>
-                            4401097999/440101001
+                            {{user_organization_inn}}
                         </td>
                     </tr>
                 </table>

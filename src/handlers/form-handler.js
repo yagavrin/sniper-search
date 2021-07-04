@@ -6,6 +6,11 @@ class BasicFormHandler {
         if (this.parentEl) {
             this.init()
             this.modal = new Modal()
+            this.showPassBtnsArray = this.parentEl.querySelectorAll('.btn_show-pass')
+            this.showPassBtnHandler = this.showPassBtnHandler.bind(this)
+            this.showPassBtnsArray.forEach((btn) => {
+                btn.addEventListener('click', this.showPassBtnHandler)
+            })
         }
     }
 
@@ -30,6 +35,35 @@ class BasicFormHandler {
             this.modal.showModal('Что-то пошло не так...')
         }
     }
+
+    showPassBtnHandler(e) {
+        const btn = e.target
+        const parentEl = btn.parentElement
+        const input = parentEl.querySelector('.reg-form__input')
+        if (input.type === 'password') {
+            btn.textContent = 'Скрыть'
+            input.type = 'text'
+        } else {
+            btn.textContent = 'Показать'
+            input.type = 'password'
+        }
+    }
+
+    async convertToSHA515(data) {
+        // encode as UTF-8
+        const msgBuffer = new TextEncoder('utf-8').encode(data);
+      
+        // hash the message
+        const hashBuffer = await window.Crypto.subtle.digest('SHA-512', msgBuffer);
+      
+        // convert ArrayBuffer to Array
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+      
+        // convert bytes to hex string
+        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+        // console.log(hashHex);
+        return hashHex;
+      }
 
     trimSpace(e) {
         const str = e.target.value.trim()

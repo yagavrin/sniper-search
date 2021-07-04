@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block head_title %}Авторизация{% endblock %}
 {% block body %}
     <section class="login-page">
@@ -17,7 +17,7 @@
             <div>
                 <button class="reg-form__submit-btn">Войти</button>
             </div>
-            <a href="" class="reg-form__login-or-reg">Нет аккаунта? Зарегистрироваться</a>
+            <a href="{{server_url}}/user/registration" class="reg-form__login-or-reg">Нет аккаунта? Зарегистрироваться</a>
         </form> 
         </div>
     </section>

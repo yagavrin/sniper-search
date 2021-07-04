@@ -21,6 +21,7 @@ class RegistrationHandler extends BasicFormHandler {
         this.passInputHandler = this.passInputHandler.bind(this)
         this.submitFormHandler = this.submitFormHandler.bind(this)
         this.inputFocusHandler = this.inputFocusHandler.bind(this)
+        this.fetchOK = this.fetchOK.bind(this)
 
         this.emailInput.addEventListener('blur', this.emailInputHandler)    
         this.loginInput.addEventListener('blur', this.loginInputHandler)
@@ -50,7 +51,7 @@ class RegistrationHandler extends BasicFormHandler {
     async fetchRegistration() {
         const data = new FormData(this.form)
         const options = {
-            url: '/user-registration',
+            url: '/user/registration',
             method: 'POST',
             data,
             func: this.fetchOK
@@ -65,8 +66,10 @@ class RegistrationHandler extends BasicFormHandler {
             return
         }
         if (result.result === 'success') {
-            alert('Успех')
+            alert('Код подтверждения был направлен вам на почту')
             return
+        } else {
+            this.modal.showModal('Что-то пошло не так...')
         }
     }
 

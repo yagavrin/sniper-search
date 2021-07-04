@@ -1,9 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block head_title %}Регистрация{% endblock %}
 {% block body %}
 <section class="reg-page">
     <div class="reg-form__container">
-        <form action="http://185.209.22.56:{{port}}/user-registration" method="post" class="reg-form">
+        <form action="" method="post" class="reg-form">
             <div class="reg-form__input-container">
                 <label for="email" class="reg-form__label"></label>
                 <input name="email" id="email" value="" placeholder="Ваш e-mail" class="reg-form__input">
@@ -23,7 +23,7 @@
             <div>
                 <button class="reg-form__submit-btn">Зарегистрироваться</button>
             </div>
-            <a href="" class="reg-form__login-or-reg">Есть аккаунт? Войти</a>
+            <a href="{{server_url}}/user/login" class="reg-form__login-or-reg">Есть аккаунт? Войти</a>
         </form>
     </div>
   </section>
