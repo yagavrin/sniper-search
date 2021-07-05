@@ -1,5 +1,7 @@
+import Cleave from '../cleave'
 import { BasicFormHandler } from './form-handler'
 import { Notification } from './notification'
+import "../cleave-phone.ru"
 
 class RegistrationHandler extends BasicFormHandler {
     constructor(element) {
@@ -7,12 +9,14 @@ class RegistrationHandler extends BasicFormHandler {
         this.isMailValid = false
         this.isLoginValid = false
         this.isPassValid = false
+        this.isPhoneValid = false
     }
 
     init() {
         this.emailInput = this.parentEl.querySelector('#email')
         this.loginInput = this.parentEl.querySelector('#login')
         this.passInput = this.parentEl.querySelector('#password')
+        this.phoneInput = this.parentEl.querySelector('.reg-form__input_phone')
         this.form = this.parentEl.firstElementChild
         this.submitBtn = this.parentEl.querySelector('.reg-form__submit-btn')
 
@@ -21,16 +25,23 @@ class RegistrationHandler extends BasicFormHandler {
         this.passInputHandler = this.passInputHandler.bind(this)
         this.submitFormHandler = this.submitFormHandler.bind(this)
         this.inputFocusHandler = this.inputFocusHandler.bind(this)
+        this.phoneInputHandler = this.phoneInputHandler.bind(this)
         this.fetchOK = this.fetchOK.bind(this)
 
         this.emailInput.addEventListener('blur', this.emailInputHandler)    
         this.loginInput.addEventListener('blur', this.loginInputHandler)
         this.passInput.addEventListener('blur', this.passInputHandler)
+        this.phoneInput.addEventListener('blur', this.phoneInputHandler)
         this.form.addEventListener('submit', this.submitFormHandler)
 
         this.inputs = this.parentEl.querySelectorAll('.reg-form__input')
         this.inputs.forEach((el) => {
             el.addEventListener('focus', this.inputFocusHandler)
+        })
+
+        const cleave = new Cleave(this.phoneInput, {
+            phone: true,
+            phoneRegionCode: 'RU'
         })
     }
 
@@ -38,8 +49,9 @@ class RegistrationHandler extends BasicFormHandler {
         e.preventDefault()
         this.checkMail(this.emailInput)
         this.checkLogin(this.loginInput)
+        this.checkPhone(this.phoneInput)
         this.checkPassword(this.passInput)
-        const isDataUsable = this.isMailValid && this.isLoginValid && this.isPassValid
+        const isDataUsable = this.isMailValid && this.isLoginValid && this.isPhoneValid && this.isPassValid
         if (!isDataUsable) {
             this.shakeBtn(this.submitBtn)
         } else {
@@ -77,6 +89,10 @@ class RegistrationHandler extends BasicFormHandler {
         Notification.hideNotification(e.target)
     }
 
+    phoneInputHandler(e) {
+        this.checkPhone(e.target)
+    }
+
     emailInputHandler(e) {
         this.checkMail(e.target)
     }
@@ -87,6 +103,19 @@ class RegistrationHandler extends BasicFormHandler {
 
     passInputHandler(e) {
         this.checkPassword(e.target)
+    }
+
+    checkPhone(element) {
+        //79998883366 =11 символов
+        const phone = element.value
+        let formattedPhone = phone.split('+').join('').split(' ').join('')
+        if (formattedPhone.length !== 11) {
+            Notification.showNotification(element, 'Введите корректный номер телефона')
+            this.isPhoneValid = false
+        } else {
+            this.isPhoneValid = true
+        }
+
     }
 
     checkMail(element) {
