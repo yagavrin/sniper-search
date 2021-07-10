@@ -29,15 +29,15 @@ class ChangePassHandler extends RegistrationHandler {
     }
 
     repeatPassHandler(e) {
-        this.comparePasswords(e.target)
+        this.comparePasswords(this.newPassInput, e.target)
     }
 
     async submitFormHandler(e) {
         e.preventDefault()
         
-        this.checkOldPassword()
+        this.checkOldPassword(this.passInput)
         this.checkPassword(this.newPassInput)
-        this.comparePasswords(this.repeatPassInput)
+        this.comparePasswords(this.newPassInput, this.repeatPassInput)
         if (!this.isValid || !this.isOldPassValid) {
             this.shakeBtn(this.submitBtn)
         } else {
@@ -67,7 +67,7 @@ class ChangePassHandler extends RegistrationHandler {
     }
 
     checkOldPassword() {
-        if (this.isOldPassEmpty()) {
+        if (this.isOldPassEmpty(this.passInput)) {
             Notification.showNotification(this.passInput, 'Введите пароль')
             this.isOldPassValid = false;
         } else {
@@ -75,24 +75,26 @@ class ChangePassHandler extends RegistrationHandler {
         }
     }
 
-    isOldPassEmpty() {
-        return this.passInput.value.length === 0
+    isOldPassEmpty(value) {
+        if (value) {
+            return value.length === 0
+        }
     }
 
-    comparePasswords(element) {
-        if (this.repeatPassInput.value.length === 0) {
-            Notification.showNotification(element, 'Пароль должен быть не менее 8 символов')
+    comparePasswords(newPassInput, repeatPassInput) {
+        if (newPassInput.value.length === 0) {
+            Notification.showNotification(newPassInput, 'Пароль должен быть не менее 8 символов')
             this.isValid = false
-        } else if (!this.arePasswordsTheSame()) {
-            Notification.showNotification(element, 'Пароли не совпадают')
+        } else if (!this.arePasswordsTheSame(newPassInput.value, repeatPassInput.value)) {
+            Notification.showNotification(repeatPassInput, 'Пароли не совпадают')
             this.isValid = false
-        }else {
+        } else {
             this.isValid = true
         }
     }
 
-    arePasswordsTheSame() {
-        return this.newPassInput.value === this.repeatPassInput.value
+    arePasswordsTheSame(value1, value2) {
+        return value1 === value2
     }
 }
 

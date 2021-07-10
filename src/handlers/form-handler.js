@@ -31,7 +31,7 @@ class BasicFormHandler {
                 this.modal.showModal('Что-то пошло не так...')
             }
         } catch (error) {
-            console.log('er', error)
+            console.log('error', error)
             this.modal.showModal('Что-то пошло не так...')
         }
     }
@@ -63,7 +63,19 @@ class BasicFormHandler {
         const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
         // console.log(hashHex);
         return hashHex;
-      }
+    }
+
+    // comparePasswords(element) {
+    //     if (this.repeatPassInput.value.length === 0) {
+    //         Notification.showNotification(element, 'Пароль должен быть не менее 8 символов')
+    //         this.isValid = false
+    //     } else if (!this.arePasswordsTheSame()) {
+    //         Notification.showNotification(element, 'Пароли не совпадают')
+    //         this.isValid = false
+    //     }else {
+    //         this.isValid = true
+    //     }
+    // }
 
     trimSpace(e) {
         const str = e.target.value.trim()

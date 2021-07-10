@@ -24,9 +24,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }),
     new HtmlWebpackPlugin({
       // template: `${PATHS.src}/change-pass.html`,
+      template: `${PATHS.src}/new-pass.html`,
       // template: `${PATHS.src}/login.html`,
       // template: `${PATHS.src}/user_profile.html`,
-      template: `${PATHS.src}/registration.html`,
+      // template: `${PATHS.src}/registration.html`,
       // template: `${PATHS.src}/add-user.html`,
       // template: `${PATHS.src}/subscription.html`,
       filename: "index.html",

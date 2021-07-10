@@ -1,14 +1,15 @@
-{% extends 'user-profile.html' %}
-{% block head_title %}Изменение пароля{% endblock %}
-{% block profile_details %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     <div class="profile-page__tariff">Изменение пароля</div>
-    <div class="change-pass-form__container">
+    <div class="set-new-pass-form__container">
         <form action="" method="post" class="reg-form reg-form_change-pass">
-            <div class="reg-form__input-container">
-                <input type="password" name="old_password" id="password" value="" placeholder="Ваш текущий пароль" class="reg-form__input">
-                <div class="reg-form__notification" hidden></div>
-                <button type="button" class="btn btn_show-pass">Показать</button>
-            </div>
             <div class="reg-form__input-container">
                 <input type="password" name="new_password" value="" placeholder="Новый пароль" class="reg-form__input reg-form__new-pass">
                 <div class="reg-form__notification" hidden></div>
@@ -24,4 +25,5 @@
             </div>
         </form>
     </div>
-{% endblock %}
+</body>
+</html>
