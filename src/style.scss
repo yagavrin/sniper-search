@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Montserrat, sans-serif;
+    color: #454B54;
 }
 //Удалить
 * section {
@@ -205,22 +206,110 @@
     }
 }
 
+.logo {
+    &__container {
+        display: flex;
+    }
+    &__title {
+        width: 118px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 24px;
+        line-height: 29px;
+        color: #454B54;
+    }
+}
+
 .header {
+    height: 113px;
+    display: flex;
+    justify-content: space-evenly;
     &__ul {
         display: flex;
         justify-content: space-evenly;
+        align-items: center;
+        &_disabled {
+            display: none;
+        }
     }
     &__item {
         list-style: none;
-        
+        margin-right: 24px;
     }
     &__link {
-        text-transform: uppercase;
         text-decoration: none;
-        font-family: Arial, sans-serif;
+        font-size: 18px;
     }
     &__btn_close_hidden {
         display: none;
+    }
+    &__btn_menu-toggle {
+        display: none;
+    }
+}
+
+.teaser {
+    // background: url('../src/static/main_bg.jpg') center (center / cover) no-repeat;
+    padding-top: 77px;
+    padding-bottom: 170px;
+    &__title {
+        font-weight: bold;
+        font-size: 42px;
+        text-align: center;
+        text-align: center;
+        margin-bottom: 33px;
+    }
+    &__subtitle {
+        font-size: 22px;
+        color: #000000;
+        text-align: center;
+        margin-bottom: 33px;
+    }
+    &__start {
+        display: block;
+        margin: 0 auto;
+        width: 288px;
+        height: 76px;
+        background: #5BB4F0;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 20px;
+        line-height: 40px;
+        text-align: center;
+        text-align: center;
+        color: #FFFFFF;
+
+    }
+}
+
+.profile-links {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    line-height: 45px;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    align-items: center;
+    &__entry {
+        width: 118px;
+        height: 51.36px;
+        border: 3px solid #91CCF3;
+        border-radius: 10px;
+        text-decoration: none;
+        margin-right: 23px;
+    }
+    &__reg {
+        width: 189px;
+        height: 51.36px;
+        background: #5BB4F0;
+        border: 3px solid #5BB4F0;
+        border-radius: 10px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #FFF;
     }
 }
 
@@ -236,6 +325,62 @@
         line-height: 16px;
     }
 }
+
+.loading {
+    height: 50px;
+    z-index: 1;
+    position: absolute; 
+    left: 0; right: 0; top: 0; bottom: 0;
+    margin: auto auto;
+}
+
+.spin-wrapper{
+    position: relative;
+    width: 100%;
+  
+    .spinner{
+      position: absolute;
+      height: 80px;
+      width: 80px;
+      border: 4px solid transparent;
+      border-top-color: #A04668;
+      top: 50%;
+      left: 50%;
+      margin: -30px;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+      
+      &:before, &:after{
+        content:'';
+        position: absolute;
+        border: 6px solid transparent;
+        border-radius: 50%;
+      }
+      
+      &:before{
+        border-top-color: #254E70;
+        top: -12px;
+        left: -12px;
+        right: -12px;
+        bottom: -12px;
+        animation: spin 3s linear infinite;
+      }
+      
+      &:after{
+        border-top-color: #53cc5d;
+        top: 6px;
+        left: 6px;
+        right: 6px;
+        bottom: 6px;  
+        animation: spin 4s linear infinite;
+      }
+    }
+  }
+  
+  @keyframes spin{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+  }
 
 // @media screen {
     
@@ -256,18 +401,27 @@
 
 @media (max-width: 540px) {
     header {
-        
+        position: fixed;
+        background-color: white;
+        z-index: 100;
+        height: 50px;
+        display: block;
+        left: 0; right: 0;
     }
     .header {
-        &_disabled {
-            display: none;
-        }
         &__ul {
+            margin-top: 100px;
             position: fixed;
             background-color: white;
-            z-index: 100;
+            // z-index: 100;
             left: 0; right: 0; top: 0; bottom: 0;
-            display: block;
+            display: none;
+            &_active {
+                display: block;
+            }
+            // &_disabled {
+            //     display: block;
+            // }
         }
         &__item {
             padding-top: 15px;
@@ -277,6 +431,9 @@
             display: block;
         }
         &__btn_close_hidden {
+            display: block;
+        }
+        &__btn_menu-toggle {
             display: block;
         }
     }

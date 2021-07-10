@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="header__link">
+            <div class="logo__container">
+                <img src="../src/static/logo.svg" alt="Логотип">
+                <p class="logo__title">Sniper search</p>
+            </div>
+        </a>
+        <ul class="header__ul">
+            <li class="header__item">
+                <a href="" class="header__link">Возможности</a>
+            </li>
+            <li class="header__item">
+                <a href="" class="header__link">Тарифы</a>
+            </li>
+            <li class="header__item">
+                <a href="" class="header__link">О разработчике</a>
+            </li>
+            <li class="header__item">
+                <a href="" class="header__link">Помощь</a>
+            </li>
+            <!-- {% if user_login %}
+                <li class="header__item">
+                    <a href="{{server_url}}/user/profile" class="header__link">{{user_login}}</a>
+                </li>
+                <li class="header__item">
+                    <a href="{{server_url}}/user/logout" class="header__link">Выйти</a>
+                </li>
+            {% else %} -->
+            <!-- {% endif %} -->
+        </ul>
+        <div class="profile-links">
+            <a href="{{server_url}}/user/login" class="profile-links__entry">Войти</a>
+            <a href="{{server_url}}/user/registration" class="profile-links__reg">Регистрация</a>
+        </div>
+    </header>
+    <section class="landing-page">
+        <div class="teaser">
+            <h1 class="teaser__title">Автоматизируйте поиск поставщиков - ускорьте работу в 15 раз!</h1>
+            <div class="teaser__subtitle">Sniper Search - уникальная система, 
+                которая объединяет инструменты для поиска клиентов и товаров, 
+                автоматических рассылок и менеджмента заявок
+            </div>
+            <a href="{{server_url}}/user/registration" class="teaser__start">Начать бесплатно</a>
+        </div>
+        <div class="abilities">
+            <h4 class="abilities__title">Что умеет Sniper Search?</h4>
+            <div class="abilities__descr">
+                Программа автоматизирует рутинные задачи по сделкам,  
+                сокращая время выполнения более чем в 10 раз. 
+                Поиск контактов для рассылки, анализ ответов и отбор подходящего поставщика, 
+                систематизация заявок - все это в одном месте!
+            </div>
+            <div class="abilities__container">
+                <div class="abilities__item">
+                    <p></p>
+                    <img src="" alt="" class="abilities__img">
+                </div>
+                <div class="abilities__item">
+                    <p></p>
+                    <img src="" alt="" class="abilities__img">
+                </div>
+                <div class="abilities__item">
+                    <p></p>
+                    <img src="" alt="" class="abilities__img">
+                </div>
+            </div>
+        </div>
+        <div class="details__slider">
+            <p class="details__title">Вся информация по заявкам в одной вкладке!</p>
+            <div class="details__descr">
+                Sniper Search - уникальная система, которая объединяет инструменты 
+                для поиска клиентов и товаров, автоматических рассылок и менеджмента заявок 
+                Sniper Search - уникальная система, которая объединяет инструменты для поиска 
+                клиентов и товаров, автоматических рассылок и менеджмента заявок
+            </div>
+            <img src="" alt="" class="details__scrn">
+        </div>
+        <div class="promo-reg">
+            <h3 class="promo-reg__title">Оцените преимущества программы уже сейчас!</h3>
+            <div class="promo-reg__descr">Зарегистрируйте аккаунт в личном кабинете и 
+                получите доступ ко всем возможностям
+                Sniper Search совершенно бесплатно 
+            </div>
+            <a href="" class="promo__link ">Зарегистрироваться</a>
+        </div>
+        <div class="features">
+            <h3 class="features__title">Уникальные фишки - такого точно нет у других!</h3>
+            <div class="features__container">
+                <div class="features__item">
+                    <div class="features__subtitle">
+                        Поиск по ключевому слову 
+                    </div>
+                    <div class="features__descr">
+                        Вы сможете находить контакты поставщиков, 
+                        просто вбив запрос в наш встроенный браузер. 
+                        Программа просканирует страницы автоматически и составит список для рассылки
+                    </div>
+                </div>
+                <div class="features__item">
+                    <div class="features__subtitle">
+                        Рассылка без ограничений на количество писем
+                    </div>
+                    <div class="features__descr">
+                        Вы сможете находить контакты поставщиков, 
+                        просто вбив запрос в наш встроенный браузер. 
+                        Программа просканирует страницы автоматически и составит список для рассылки
+                    </div>
+                </div>
+                <div class="features__item">
+                    <div class="features__subtitle">
+                        Менеджер заявок и рассыльщик - в одном окне 
+                    </div>
+                    <div class="features__descr">
+                        Вы сможете находить контакты поставщиков, 
+                        просто вбив запрос в наш встроенный браузер. 
+                        Программа просканирует страницы автоматически и составит список для рассылки
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="customers">
+            <h3 class="customers__title">Кому подойдет Sniper Search?</h3>
+            <div class="customers__item">
+                <img src="" alt="" class="customers__img">
+                <div class="customers__description">
+                    Большим предприятиям для повышения эффективности
+                </div>
+            </div>
+            <div class="customers__item">
+                <img src="" alt="" class="customers__img">
+                <div class="customers__description">
+                    Начинающим компаниям для быстрого старта
+                </div>
+            </div>
+            <div class="customers__item">
+                <img src="" alt="" class="customers__img">
+                <div class="customers__description">
+                    Магазинам и ресторанам для поиска поставщиков
+                </div>
+            </div>
+            <div class="customers__item">
+                <img src="" alt="" class="customers__img">
+                <div class="customers__description">
+                    Амбициозным менеджерам по продажам
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

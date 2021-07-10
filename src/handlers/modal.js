@@ -27,6 +27,19 @@ class Modal {
 
         this.closeBtn.addEventListener('click', this.closeModal)
         this.parentEl.addEventListener('click', this.closeModalHandler)
+
+        this.initModalLoading()
+    }
+
+    initModalLoading() {
+        this.loading = document.createElement('div')
+        this.loading.setAttribute('hidden', '')
+        document.body.prepend(this.loading)
+        this.loading.classList.add('loading')
+        this.loading.innerHTML = `<div class="spin-wrapper">
+        <div class="spinner">
+        </div>
+        </div>`
     }
 
     closeModalHandler(e) {
@@ -40,6 +53,14 @@ class Modal {
         this.parentEl.removeAttribute('hidden')
         this.modal.classList.add('modal_active')
         this.modalTextEl.textContent = text
+    }
+
+    showLoading() {
+        this.loading.removeAttribute('hidden')
+    }
+
+    closeLoading() {
+        this.loading.setAttribute('hidden', '')
     }
 
     closeModal() {

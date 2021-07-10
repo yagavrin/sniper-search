@@ -86,7 +86,7 @@ class UserListHandler extends BasicFormHandler {
             return
         }
         const options = {
-            url: '/group/add/',
+            url: '/group/add',
             method: 'POST',
             data,
             func: this.fetchUSerIsOK

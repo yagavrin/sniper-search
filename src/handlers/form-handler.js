@@ -24,14 +24,19 @@ class BasicFormHandler {
                 // },
                 body: data
             });
+            this.modal.showLoading()
             if (response.ok) {
                 const result = await response.json();
+                this.modal.closeLoading()
                 func(result)
             } else {
+                this.modal.closeLoading()
                 this.modal.showModal('Что-то пошло не так...')
             }
+
         } catch (error) {
             console.log('error', error)
+            this.modal.closeLoading()
             this.modal.showModal('Что-то пошло не так...')
         }
     }

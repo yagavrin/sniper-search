@@ -12,12 +12,19 @@ import { SetNewPassHandler } from './handlers/set-new-pass-handler'
 import { Notification } from './handlers/notification'
 
 const header = document.querySelector('header')
+const headerUl = document.querySelector('.header__ul')
+const closeBtn1 = document.querySelector('.header__btn_close')
 const toggleHeader = (e) => {
-    console.log(e)
-    e.target.closest('header').classList.toggle('header_disabled')
+    headerUl.classList.toggle('header__ul_active')
+    // headerUl.setAttribute('hidden', '')
 }
+
 if (header) {
     header.addEventListener('click', toggleHeader)
+    
+}
+if (closeBtn1) {
+    closeBtn1.addEventListener('click', toggleHeader)
 }
 
 
