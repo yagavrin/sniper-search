@@ -19,6 +19,7 @@ class UserListHandler extends BasicFormHandler {
         this.submitFormHandler = this.submitFormHandler.bind(this)
         this.deleteBtnHandler = this.deleteBtnHandler.bind(this)
         this.fetchUSerIsOK = this.fetchUSerIsOK.bind(this)
+        this.deleteUserIsOk = this.deleteUserIsOk.bind(this)
         this.inputHandler = this.inputHandler.bind(this)
         
         this.addUserForm.addEventListener('submit', this.submitFormHandler)
@@ -44,6 +45,7 @@ class UserListHandler extends BasicFormHandler {
             url: '/group/delete',
             method: 'POST',
             data: JSON.stringify({login: login}),
+            // data: login,
             func: this.deleteUserIsOk,
         }
         this.fetchURL(options)
@@ -127,9 +129,10 @@ class UserListHandler extends BasicFormHandler {
     renderUserList() {
         let html = ''
         if (this.users.length === 0) {
-            // const title = document.createElement('h4')
-            // title.textContent = 'Ваша рабочая группа пуста. Добавьте пользователей в группу чтобы иметь общий доступ к рассылкам'
-            // this.parentEl.prepend(title)
+            const title = document.createElement('h4')
+            title.textContent = 'Ваша рабочая группа пуста. Добавьте пользователей в группу чтобы иметь общий доступ к рассылкам'
+            this.list.innerHTML = ''
+            this.list.prepend(title)
             return
         }
         this.users.forEach((user) => {

@@ -78,7 +78,7 @@ class RegistrationHandler extends BasicFormHandler {
             return
         }
         if (result.result === 'success') {
-            alert('Код подтверждения был направлен вам на почту')
+            this.modal.showModal('Код подтверждения был направлен вам на почту')
             return
         } else {
             this.modal.showModal('Что-то пошло не так...')

@@ -219,6 +219,9 @@
         text-decoration: none;
         font-family: Arial, sans-serif;
     }
+    &__btn_close_hidden {
+        display: none;
+    }
 }
 
 .btn {
@@ -232,4 +235,53 @@
         font-size: 16px;
         line-height: 16px;
     }
+}
+
+// @media screen {
+    
+// }
+// 1440
+// 980
+// 768
+// 540
+// 320
+@media (max-width: 980px) {
+    .reg-page {
+        width: 90%
+    }
+}
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 540px) {
+    header {
+        
+    }
+    .header {
+        &_disabled {
+            display: none;
+        }
+        &__ul {
+            position: fixed;
+            background-color: white;
+            z-index: 100;
+            left: 0; right: 0; top: 0; bottom: 0;
+            display: block;
+        }
+        &__item {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+        &__btn_close {
+            display: block;
+        }
+        &__btn_close_hidden {
+            display: block;
+        }
+    }
+}
+
+@media (max-width: 320px) {
+
 }

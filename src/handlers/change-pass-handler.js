@@ -16,6 +16,7 @@ class ChangePassHandler extends RegistrationHandler {
         this.submitFormHandler = this.submitFormHandler.bind(this)
         this.inputFocusHandler = this.inputFocusHandler.bind(this)
         this.repeatPassHandler = this.repeatPassHandler.bind(this)
+        this.changePassIsOK = this.changePassIsOK.bind(this)
 
         this.newPassInput.addEventListener('blur', this.passInputHandler)
         this.repeatPassInput.addEventListener('blur', this.repeatPassHandler)
@@ -45,21 +46,22 @@ class ChangePassHandler extends RegistrationHandler {
                 url: '/user/edit',
                 method: 'POST',
                 data,
-                func: this.fetchOK,
+                func: this.changePassIsOK,
             }
             this.fetchURL(options)
         }
         
     }
 
-    fetchOK(result) {
-        if (result.result === 'invalid credentials') {
-            Notification.showNotification(this.loginInput, 'Неверный логин или пароль')
+    changePassIsOK(response) {
+        const result = response.result
+        if (result === 'invalid password') {
+            Notification.showNotification(this.loginInput, 'Неверный пароль')
             this.shakeBtn(this.submitBtn)
             return
         }
-        if (result.result === 'success') {
-            alert('Успех')
+        if (result === 'success') {
+            this.modal.showModal('Вы успешно сменили пароль')
             return
         }
     }
